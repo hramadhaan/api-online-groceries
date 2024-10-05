@@ -47,9 +47,32 @@ exports.createProduct = async (req, res, next) => {
       .status(201)
       .json({ message: "Product created", product: response, error: false });
   } catch (error) {
-    console.log('Hanif Error: ', error)
+    console.log("Hanif Error: ", error);
     if (!res.statusCode) {
       err.statusCode = 500;
+    }
+    next(error);
+  }
+};
+
+exports.listProduct = async (req, res, next) => {
+  try {
+    const product = await Product.find().populate([
+      "category",
+      "stock",
+      "brand",
+    ]);
+    if (!product) {
+      const error = new Error("Product not found");
+      error.statusCode = 404;
+      throw error;
+    }
+    res
+      .status(200)
+      .json({ message: "Product found", product: product, error: false });
+  } catch (error) {
+    if (!res.statusCode) {
+      error.statusCode = 500;
     }
     next(error);
   }
