@@ -9,7 +9,8 @@
     "nodemon": "^3.1.4"
   },
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "aws-sdk": "^2.1687.0",
