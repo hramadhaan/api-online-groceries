@@ -45,7 +45,7 @@ exports.createProduct = async (req, res, next) => {
     const response = await product.save();
     res
       .status(201)
-      .json({ message: "Product created", product: response, error: false });
+      .json({ message: "Product created", data: response, error: false });
   } catch (error) {
     console.log("Hanif Error: ", error);
     if (!res.statusCode) {
@@ -69,7 +69,7 @@ exports.listProduct = async (req, res, next) => {
     }
     res
       .status(200)
-      .json({ message: "Product found", product: product, error: false });
+      .json({ message: "Product found", data: product, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;
@@ -93,7 +93,7 @@ exports.showProductDetail = async (req, res, next) => {
     }
     res
       .status(200)
-      .json({ message: "Product found", product: product, error: false });
+      .json({ message: "Product found", data: product, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;
@@ -124,7 +124,7 @@ exports.deleteProduct = async (req, res, next) => {
 
     res
       .status(200)
-      .json({ message: "Product deleted", product: product, error: false });
+      .json({ message: "Product deleted", data: product, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;

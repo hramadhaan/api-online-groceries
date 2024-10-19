@@ -4,6 +4,7 @@ const { body } = require("express-validator");
 
 const productControllers = require("../controllers/product");
 const { storageSpaces } = require("../services/storage-aws");
+const isAuth = require("../middleware/authentication");
 
 const router = express.Router();
 
@@ -18,6 +19,7 @@ router.post(
     body("price").not().isEmpty(),
     body("category").not().isEmpty(),
   ],
+  isAuth,
   productControllers.createProduct
 );
 

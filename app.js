@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 8080;
 const categoryRoutes = require("./routes/category");
 const brandRoutes = require("./routes/brand");
 const productRoutes = require("./routes/product");
+const authRoutes = require("./routes/auth");
+const cartRoutes = require("./routes/cart");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -26,6 +28,8 @@ app.use((req, res, next) => {
 app.use("/category", categoryRoutes);
 app.use("/brand", brandRoutes);
 app.use("/product", productRoutes);
+app.use("/auth", authRoutes);
+app.use("/cart", cartRoutes);
 
 // Error handling
 app.use((error, req, res, next) => {

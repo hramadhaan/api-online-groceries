@@ -16,7 +16,7 @@ exports.createBrand = async (req, res, next) => {
     await brand.save();
     res
       .status(201)
-      .json({ message: "Brand created", brand: brand, error: false });
+      .json({ message: "Brand created", data: brand, error: false });
   } catch (error) {
     if (!res.statusCode) {
       err.statusCode = 500;
@@ -35,7 +35,7 @@ exports.listBrand = async (req, res, next) => {
     }
     res
       .status(200)
-      .json({ message: "Brand found", brand: brand, error: false });
+      .json({ message: "Brand found", data: brand, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;
@@ -64,7 +64,7 @@ exports.deleteBrand = async (req, res, next) => {
     }
     res
       .status(200)
-      .json({ message: "Brand deleted", brand: brand, error: false });
+      .json({ message: "Brand deleted", data: brand, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;
@@ -95,7 +95,7 @@ exports.productsByBrand = async (req, res, next) => {
     }
     res
       .status(200)
-      .json({ message: "Products found", brand: products, error: false });
+      .json({ message: "Products found", data: products, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;

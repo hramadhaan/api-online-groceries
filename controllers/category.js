@@ -29,7 +29,7 @@ exports.createCategory = async (req, res, next) => {
     await category.save();
     res
       .status(201)
-      .json({ message: "Category created", category: category, error: false });
+      .json({ message: "Category created", data: category, error: false });
   } catch (error) {
     if (!res.statusCode) {
       err.statusCode = 500;
@@ -57,7 +57,7 @@ exports.listCategory = async (req, res, next) => {
     }
     res
       .status(200)
-      .json({ message: "Category found", category: category, error: false });
+      .json({ message: "Category found", data: category, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;
@@ -115,7 +115,7 @@ exports.productByCategory = async (req, res, next) => {
     }
     res
       .status(200)
-      .json({ message: "Products found", category: products, error: false });
+      .json({ message: "Products found", data: products, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;

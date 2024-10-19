@@ -21,7 +21,7 @@ exports.changeStockOnProduct = async (req, res, next) => {
 
     res
       .status(200)
-      .json({ message: "Stock updated", product: response, error: false });
+      .json({ message: "Stock updated", data: response, error: false });
   } catch (error) {
     if (!res.statusCode) {
       error.statusCode = 500;
