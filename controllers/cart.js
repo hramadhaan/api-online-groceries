@@ -30,8 +30,8 @@ exports.addToCart = async (req, res, next) => {
       );
       if (itemIndex > -1) {
         let productItem = cart.items[itemIndex];
-        productItem.quantity = quantity;
         cart.items[itemIndex] = productItem;
+        cart.items[itemIndex].quantity = cart.items[itemIndex].quantity + quantity;
         cart.totalProducts = cart.totalProducts + quantity;
         cart.totalPrice = cart.totalPrice + checkProduct.price * quantity;
       } else {
