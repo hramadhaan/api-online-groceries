@@ -43,6 +43,11 @@ const productSchema = new Schema(
       default: "inactive",
       type: Schema.Types.String,
     },
+    discount: {
+      type: Schema.Types.ObjectId,
+      ref: "Discount",
+      default: null,
+    },
   },
   { timestamps: true }
 );

@@ -55,11 +55,6 @@ exports.addToCart = async (req, res, next) => {
 exports.getCart = async (req, res, next) => {
   try {
     const cart = await Cart.findOne({ user: req.userId });
-    if (!cart) {
-      const error = new Error("Cart not found");
-      error.statusCode = 404;
-      throw error;
-    }
     res.status(200).json({ message: "Cart found", data: cart, error: false });
   } catch (error) {
     if (!res.statusCode) {
