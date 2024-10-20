@@ -33,6 +33,7 @@ app.use("/cart", cartRoutes);
 
 // Error handling
 app.use((error, req, res, next) => {
+  console.log("ERROR: ", error);
   const status = error.statusCode || 500;
   const message = error?.data?.[0]?.msg || "Server Failure";
   res.status(status).json({ message: message, success: false });
