@@ -13,7 +13,7 @@ const cartRoutes = require("./routes/cart");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// app.use(express.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST");
@@ -34,7 +34,7 @@ app.use("/cart", cartRoutes);
 // Error handling
 app.use((error, req, res, next) => {
   console.log("ERROR: ", error);
-  const status = error.statusCode || 500;
+  const status = error?.statusCode || 500;
   const message = error?.data?.[0]?.msg || "Server Failure";
   res.status(status).json({ message: message, success: false });
 });
